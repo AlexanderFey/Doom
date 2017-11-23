@@ -31,6 +31,11 @@ public class Player {
         return health;
     }
 
+    @Override
+    public String toString() {
+        return "P";
+    }
+
     void move(Room room)
     {
         int newX = x + (random.nextInt(3)+1);
@@ -56,7 +61,10 @@ public class Player {
 
     void attack(int damage)
     {
-
+        health -= damage;
+        if(this.health <= 0){
+            this.health = 0;
+        }
     }
 
     public boolean isDeath()
