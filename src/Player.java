@@ -31,10 +31,27 @@ public class Player {
         return health;
     }
 
-    void move()
+    void move(Room room)
     {
-        x += random.nextInt(1);
-        y += random.nextInt(1);
+        int newX = x + (random.nextInt(3)+1);
+        newX = newX <= 1 ? 1 : (newX>= Room.HEIGHT ? Room.HEIGHT : newX);
+
+        int newY = x + (random.nextInt(3)+1);
+        newY = newY <= 1 ? 1 : (newY>= Room.WIDTH ? Room.WIDTH : newY);
+        if(room.isFree(newX,newY)){
+            x = newX;
+            y = newY;
+        }else{
+            if(room.isFree(x, newY)){
+                y = newY;
+            }else {
+                if(room.isFree(newX,y)){
+                    x = newX;
+                }
+            }
+        }
+
+
     }
 
     void attack(int damage)
