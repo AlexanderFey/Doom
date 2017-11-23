@@ -38,10 +38,10 @@ public class Player {
 
     void move(Room room)
     {
-        int newX = x + (random.nextInt(3)+1);
+        int newX = x + (random.nextInt(3)-1);
         newX = newX <= 1 ? 1 : (newX>= Room.HEIGHT ? Room.HEIGHT : newX);
 
-        int newY = x + (random.nextInt(3)+1);
+        int newY = x + (random.nextInt(3)-1);
         newY = newY <= 1 ? 1 : (newY>= Room.WIDTH ? Room.WIDTH : newY);
         if(room.isFree(newX,newY)){
             x = newX;
